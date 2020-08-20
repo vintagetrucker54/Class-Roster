@@ -1,57 +1,64 @@
-// Roster-c867.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// C867-PA-Roster.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-
-#include "pch.h"
+#pragma once
 #include "Degree.h"
 #include "roster.h"
 #include "Student.h"
 #include <iostream>
-#include "roster.cpp"
-#include "main.h"
 using std::cerr;
 using std::string;
 using std::cout;
 using std::endl;
+using namespace std;
 
-
-
-//Input is 7 long comma-delimited strings
-string classRosterArray[numStudents] =
-
-{ "A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY", "A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK", "A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE", "A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY", "A5,Jonathan,Fletcher,jflet63@wgu.edu,33,99,99,99,SOFTWARE" };
 
 int main()
 {
+	cout << endl << "   WGU - Scripting & Programming - C867   " << endl;
+	cout << endl << "    Jonathan Fletcher - ID# 001427881     " << endl << endl;
 
-	Roster* Roster;
-	for (int i = 0; i < numStudents; ++i) {
-		Roster->add(numStudents[classRosterArray]);
+	const static int numStudents = 5;
+	string studentData[numStudents] =
+	{ "A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY",
+		"A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK",
+		"A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE",
+		"A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
+		"A5,Jonathan,Fletcher,jflet63@wgu.edu,33,99,99,99,SOFTWARE" };
+
+
+	 Roster* classRoster = new Roster(numStudents);
+
+	for (int i = 0; i < numStudents; i++) {
+		classRoster->parseAdd(studentData[i]);
 	}
 
-	Roster->printAll();
+	cout << "Students: " << endl;
+	classRoster->printAll();
 	cout << endl;
 
-	cout << "Invalid Emails" << endl;
-	Roster->printInvalidEmail();
+	cout << "Invalid Emails: " << endl;
+	classRoster->printInvalidEmail();
 	cout << endl;
 
-	cout << "Average days per class for each student" << endl;
+	cout << "Average days per class for each student: " << endl;
 	for (int i = 0; i < numStudents; ++i) {
-		Roster->printAverageCourseDays(Roster->classRosterArray[i]->getId());
+		classRoster->printAverageCourseDays(classRoster->classRosterArray[i]->getId());
 	}
 	cout << endl;
 
-	Roster->printByDegreeProgram(SOFTWARE);
+	cout << "Software Degree Students: ";
+	classRoster->printByDegreeProgram(Degree::SOFTWARE);
 	cout << endl;
-	Roster->remove("A3");
+	if (classRoster->remove("A3")) classRoster->printAll();
+	else cout << "Student not found" << endl; 
 	cout << endl;
-	Roster->remove("A3");
-	cout << endl;
+	if (classRoster->remove("A3")) classRoster->printAll();//Second remove for error check
+	else cout << "Student not found" << endl;
 
-
-	system("pause"); 
+	system("pause");
 	return 0;
 }
+
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
