@@ -5,25 +5,28 @@
 #include <string>
 #include <list>
 #include <array>
-#include "pch.h"
 #include "Student.h"
 #include "Degree.h"
+using namespace std;
 
-class Roster;
+
+
+
 //Roster stores Students
 class Roster {
 public:
-	int lastStudentIndex;                                    //index of last student in repository
-	int capacity;                                            //max size of repository
-	Student** classRosterArray;                              //array of pointers to students
-	Roster();                                                //empty construct, initializes default vals
+	int lastStudentIndex;                           //index of last student in repository
+	int capacity;                                   //max size of repository
+	Student** classRosterArray;                     //array of pointers to students
+	Roster();                                       //empty construct, initializes default vals
 	Roster(int capacity);
-	void add(string datarow);                                //parses strings, creates Student objects
-	void printAll();                                         //prints all students in repository using each Student's print() method
-	void remove(string studentId);                           //removes a student based on ID
-	void printAverageCourseDays(string studentId);           //prints avg # of days left in courses
-	void printInvalidEmail();                                //locates and prints invalid emails
-	void printByDegreeProgram(Degree degreeProgram);         //prints all students in specific degree
+	void parseAdd(string datarow);                  //parses strings, creates Student objects
+	void add(string ID, string fName, string lName, string email, int age, int courseDays0, int courseDays1, int courseDays2, Degree degreeProgram);
+	void printAll();                                //prints all students in repository using each Student's print() method
+	bool remove(string studentId);                  //removes a student based on ID
+	void printAverageCourseDays(string studentId);  //prints avg # of days left in courses for student with specific ID
+	void printInvalidEmail();                       //locates and prints invalid emails
+	void printByDegreeProgram(Degree d);            //prints all students in specific degree
 	
 	~Roster();//destruct 
 };
