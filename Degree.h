@@ -2,12 +2,11 @@
 #ifndef DEGREE_H
 #define DEGREE_H
 
-
 #include<iostream>
 #include<iomanip>
 #include<string>
+
 using std::string;
-using std::cout;
 
 
 enum Degree { NETWORK, SECURITY, SOFTWARE, UNKNOWN };
