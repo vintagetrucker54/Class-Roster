@@ -1,8 +1,8 @@
 // C867-PA-Roster.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-#pragma once
+
 #include "Degree.h"
-#include "roster.h"
+#include "Roster.h"
 #include "Student.h"
 #include <iostream>
 using std::cerr;
@@ -26,7 +26,7 @@ int main()
 		"A5,Jonathan,Fletcher,jflet63@wgu.edu,33,99,99,99,SOFTWARE" };
 
 
-	 Roster* classRoster = new Roster(numStudents);
+	Roster* classRoster = new Roster(numStudents);
 
 	for (int i = 0; i < numStudents; i++) {
 		classRoster->parseAdd(studentData[i]);
@@ -50,7 +50,7 @@ int main()
 	classRoster->printByDegreeProgram(Degree::SOFTWARE);
 	cout << endl;
 	if (classRoster->remove("A3")) classRoster->printAll();
-	else cout << "Student not found" << endl; 
+	else cout << "Student not found" << endl;
 	cout << endl;
 	if (classRoster->remove("A3")) classRoster->printAll();//Second remove for error check
 	else cout << "Student not found" << endl;
