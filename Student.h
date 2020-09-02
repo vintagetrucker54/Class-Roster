@@ -21,14 +21,14 @@ private:
 	Degree degreeProgram;//Enum val: NETWORK, SECURITY, SOFTWARE OR UNKNOWN
 public:
 	const static int courseArraySize = 3;
-	
+
 	//Emtpy construct
 	Student();
 
 	//Full construct
 	Student(string ID, string fName, string lName, string email, int age, int courseDays[], Degree degreeProgram);
 
-    //accessors
+	//accessors
 	string getId();
 	string getFName();
 	string getLName();
@@ -48,7 +48,7 @@ public:
 	void print();
 
 	//destruct
-	~Student();
+	~Student(){};
 };
 
 
