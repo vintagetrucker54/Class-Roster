@@ -27,8 +27,9 @@ public:
 	void printAverageCourseDays(string studentId);  //prints avg # of days left in courses for student with specific ID
 	void printInvalidEmail();                       //locates and prints invalid emails
 	void printByDegreeProgram(Degree d);            //prints all students in specific degree
+	Student* getStudentAt(int lastStudentIndex);
+
 	
-	~Roster();//destruct 
 };
 
 
