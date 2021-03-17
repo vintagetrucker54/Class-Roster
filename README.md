@@ -1,2 +1,2 @@
-# WGU-C867-Scripting-Programming-Applications
-C++  -   Student Repository
+# Class Roster (Student Repository)
+C++  -  WGU-C867-Scripting-Programming-Applications
